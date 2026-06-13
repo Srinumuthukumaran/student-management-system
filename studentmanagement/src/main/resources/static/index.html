@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <i data-lucide="graduation-cap"></i>
+
+            <h2>Eduxcate</h2>
+
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <button class="menu-item active"
+                    onclick="showSection('dashboard', this)">
+
+                <i data-lucide="layout-dashboard"></i>
+
+                <span>Dashboard</span>
+
+            </button>
+
+            <button class="menu-item"
+                    onclick="showSection('students', this)">
+
+                <i data-lucide="users"></i>
+
+                <span>Students</span>
+
+            </button>
+
+            <button class="menu-item"
+                    onclick="showSection('statistics', this)">
+
+                <i data-lucide="bar-chart-3"></i>
+
+                <span>Statistics</span>
+
+            </button>
+
+        </nav>
+
+    </aside>
+
+    <main class="main-content">
+
+        <section id="dashboardSection">
+
+            <header class="content-header">
+
+                <h1>Dashboard Overview</h1>
+
+                <p class="subtitle">
+                    Manage and track student records effortlessly.
+                </p>
+
+            </header>
+
+            <section class="card form-card">
+
+                <div class="card-header">
+
+                    <i data-lucide="user-plus"></i>
+
+                    <h3>Student Registration</h3>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="input-group">
+
+                        <input type="number"
+                               id="id"
+                               placeholder=" "
+                               required>
+
+                        <label for="id">
+                            Student ID
+                        </label>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <input type="text"
+                               id="name"
+                               placeholder=" "
+                               required>
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <input type="number"
+                               id="age"
+                               placeholder=" "
+                               required>
+
+                        <label for="age">
+                            Age
+                        </label>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <input type="text"
+                               id="course"
+                               placeholder=" "
+                               required>
+
+                        <label for="course">
+                            Course
+                        </label>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <input type="number"
+                               id="marks"
+                               placeholder=" "
+                               required>
+
+                        <label for="marks">
+                            Marks
+                        </label>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <input type="text"
+                               id="department"
+                               placeholder=" "
+                               required>
+
+                        <label for="department">
+                            Department
+                        </label>
+
+                    </div>
+
+                    <div class="input-group full-width">
+
+                        <input type="email"
+                               id="email"
+                               placeholder=" "
+                               required>
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="button-actions-group">
+
+                    <button class="btn btn-primary"
+                            onclick="addStudent()">
+
+                        <i data-lucide="plus-circle"></i>
+
+                        Add Student
+
+                    </button>
+
+                    <button class="btn btn-secondary"
+                            onclick="loadStudents()">
+
+                        <i data-lucide="eye"></i>
+
+                        View Records
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <section id="studentsSection"
+                 style="display:none;">
+
+            <header class="content-header">
+
+                <h1>Student Records</h1>
+
+                <p class="subtitle">
+                    View and manage all enrolled students.
+                </p>
+
+            </header>
+
+            <section class="card table-card">
+
+                <div class="card-header">
+
+                    <i data-lucide="list"></i>
+
+                    <h3>Enrolled Students</h3>
+
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="custom-table">
+
+                        <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Course</th>
+                            <th>Marks</th>
+                            <th>Department</th>
+                            <th>Email</th>
+                            <th class="text-center">
+                                Action
+                            </th>
+
+                        </tr>
+
+                        </thead>
+
+                        <tbody id="studentTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <section id="statisticsSection"
+                 style="display:none;">
+
+            <header class="content-header">
+
+                <h1>Statistics Dashboard</h1>
+
+                <p class="subtitle">
+                    Analyze student performance and records.
+                </p>
+
+            </header>
+
+            <div class="stats-grid">
+
+                <div class="stats-card">
+
+                    <i data-lucide="users"></i>
+
+                    <h3>Total Students</h3>
+
+                    <h1 id="totalStudents">0</h1>
+
+                </div>
+
+                <div class="stats-card">
+
+                    <i data-lucide="star"></i>
+
+                    <h3>Average Marks</h3>
+
+                    <h1 id="averageMarks">0</h1>
+
+                </div>
+
+                <div class="stats-card">
+
+                    <i data-lucide="building-2"></i>
+
+                    <h3>Total Departments</h3>
+
+                    <h1 id="totalDepartments">0</h1>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+    lucide.createIcons();
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
