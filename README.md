@@ -15,9 +15,9 @@ Features
 * REST API Integration
 * MySQL Database Connectivity
 
-## Technologies Used
+Technologies Used
 
-### Backend
+Backend
 
 * Java
 * Spring Boot
@@ -25,29 +25,26 @@ Features
 * Spring Data JPA
 * MySQL
 
-### Frontend
+Frontend
 
 * HTML5
 * CSS3
 * JavaScript
 
-### Tools
+Tools
 
 * IntelliJ IDEA
 * Git & GitHub
 * Postman
 
-## Project Architecture
+Project Architecture
 
-Frontend (HTML/CSS/JS)
-↓
-REST API Calls
-↓
-Spring Boot Backend
-↓
+Frontend (HTML/CSS/JS)-->
+REST API Calls-->
+Spring Boot Backend-->
 MySQL Database
 
-## Learning Outcomes
+Learning Outcomes
 
 This project helped in understanding:
 
@@ -59,7 +56,7 @@ This project helped in understanding:
 * Authentication & Session Handling
 * GitHub Project Deployment
 
-## Future Enhancements
+Future Enhancements
 
 * Update Student Feature
 * Search & Filter Functionality
